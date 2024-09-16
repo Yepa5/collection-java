@@ -1,16 +1,16 @@
 # Java 第四轮考核
-## 交作业注意：pr的内容：README.md（含有项目地址、项目介绍、学习记录（不需要很多））
+
 ## 部分参考资料
 
 * 文档资料
-    * [mybatis – MyBatis 3 | 简介](https://mybatis.org/mybatis-3/zh/index.html)
-    * [Spring 中文文档](https://www.springcloud.cc/spring-reference.html)
-    * [SpringBoot 官方文档 (spring.io)](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
+  * [mybatis – MyBatis 3 | 简介](https://mybatis.org/mybatis-3/zh/index.html)
+  * [Spring 中文文档](https://www.springcloud.cc/spring-reference.html)
+  * [SpringBoot 官方文档 (spring.io)](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
 * 视频资料
-    * [狂神说mybatis](https://www.bilibili.com/video/BV1NE411Q7Nx/?spm_id_from=333.999.0.0)
-    * [狂神说spring](https://www.bilibili.com/video/BV1NE411Q7Nx/?spm_id_from=333.999.0.0)
-    * [狂神说Springboot](https://www.bilibili.com/video/BV1PE411i7CV)
-    * [黑马程序员spring](https://www.bilibili.com/video/BV1Fi4y1S7ix?vd_source=e7a1a430689d9d09f914db65fcdea382)（一条龙）
+  * [狂神说mybatis](https://www.bilibili.com/video/BV1NE411Q7Nx/?spm_id_from=333.999.0.0)
+  * [狂神说spring](https://www.bilibili.com/video/BV1NE411Q7Nx/?spm_id_from=333.999.0.0)
+  * [狂神说Springboot](https://www.bilibili.com/video/BV1PE411i7CV)
+  * [黑马程序员spring](https://www.bilibili.com/video/BV1Fi4y1S7ix?vd_source=e7a1a430689d9d09f914db65fcdea382)（一条龙）
 
 
 
@@ -19,16 +19,16 @@
 * 数据库 (**Mysql**)
 * **Redis**
 * **Mybatis**、**MybatisPlus**数据持久层框架
-    * 数据持久层: 将数据持久化保存在数据库或其他文件中的框架或中间件
+  * 数据持久层: 将数据持久化保存在数据库或其他文件中的框架或中间件
 * **Spring** 框架
 * **SpringBoot / SpringMVC** 框架
-    * 可以按顺序学习，也可以适当跳过一些有关Spring全家桶的内容。最好能了解一些原理，从Spring到MVC再到Boot学下来会有质的提升(最后会发现SpringBoot真的好用)。
+  * 可以按顺序学习，也可以适当跳过一些有关Spring全家桶的内容。最好能了解一些原理，从Spring到MVC再到Boot学下来会有质的提升(最后会发现SpringBoot真的好用)。
 * **安全框架，如SpringSecurity、Shiro等**
 * **Docker的使用**
 
 
 
-### 任务
+## 任务
 
 > 你的任务是编写一个弹幕视频网站的API接口，具体要求如下：
 
@@ -36,9 +36,26 @@
 
 - 提供一份**接口文档**和**项目结构图（目录树**）。
 - 注意编程规范：
-    * [编程规范](../etc/blog/编程规范.md)
-    * [阿里巴巴开发规范](../etc/blog/阿里巴巴Java开发手册.pdf)
+  * [编程规范](../etc/blog/编程规范.md)
+  * [阿里巴巴开发规范](../etc/blog/阿里巴巴Java开发手册.pdf)
 - 完成Docker部署，编写Dockerfile并成功部署你的项目。
+- 日志打印
+
+**请遵照以下接口文档完成功能**
+
+[https://apifox.com/apidoc/shared-dcb1a5ef-5c75-4a0e-9486-e3bd748379a0](https://apifox.com/apidoc/shared-dcb1a5ef-5c75-4a0e-9486-e3bd748379a0)
+
+
+你不必完成以上的全部功能，以下完成本次作业的最低要求（共计 17 个接口，已经非常少了）
+
+| 模块名 | 最低需要完成的接口                           | 数量 |
+| ------ | -------------------------------------------- | ---- |
+| 用户   | 注册、登录、用户信息、上传头像               | 4    |
+| 视频   | 投稿、发布列表、搜索视频、热门排行榜         | 4    |
+| 互动   | 点赞操作、点赞列表、评论、评论列表、删除评论 | 5    |
+| 社交   | 关注操作、关注列表、粉丝列表、好友列表       | 4    |
+
+
 
 #### 用户模块
 
@@ -72,9 +89,20 @@
 
 * ID的生成请使用雪花算法等（MybatisPlus有对应的ID生成策略）
 
+* 同时，希望你们并不是仅仅完成CRUD，而是对项目的**性能优化**与**并发控制**有一定的**实现**(加分加分！！)
+
+  以下给出几个考虑方面：
+
+  * **数据库优化**：什么时候加索引？如何防止索引失效？如何避免大事务？为什么要避免使用select * ？
+  * **异步处理**：上传视频这种耗时较长的任务是否可以用异步处理？
+  * **并发控制**：是否可以用适当的锁和同步机制以避免并发问题？锁的粒度如何设置？
+  * **池化思想**：为什么建议创建线程池？
+  * **限流**：如何防止流量过大的问题？有哪些限流方案？
+  * ......
 
 
-### Bonus
+
+### Bonus 
 
 **如果你想挑战更多，可以考虑以下Bonus任务：**
 
